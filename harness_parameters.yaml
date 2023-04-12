@@ -1,0 +1,19 @@
+parameters:
+    parameterFilePath:
+        description: "Path to the Harness parameters file"
+        default: "harness_parameters.yaml"
+    artifactUrl:
+        description: "GAR URL to download artifact"
+        required: true
+    namespace:
+        description: "Namespace to deploy the artifacts to"
+        default: "harness-namespace"
+    kubeConfig: 
+        description: "K8s config file"
+        default: "/root/.kube/config"
+    context:
+        description: "kubernetes context"
+        default: "harness-context"
+    deployIstio:
+        description: "Whether to deploy Istio manifests"
+        default: false            

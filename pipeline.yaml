@@ -1,0 +1,62 @@
+version: '1.0'
+
+pipeline:
+  name: CD Pipeline
+  stages:
+    - name: Validate Parameters
+      type: VERIFY_YAML
+      configuration: 
+        yamlPath: ${workflow.variables.parametersFilePath}
+        notifyOnFailure: false
+    - name: Download Artifact
+      type: DOWNLOAD_FILE
+      configuration: 
+        sourceUri: ${workflow.variables.artifactUrl}
+        destinationPath: /harness/artifact.zip
+    - name: Validate Namespace
+      type: SHELL_COMMAND
+      configuration:
+        command: |
+          namespace=${workflow.variables.kubeConfig}
+          if [[ $namespace == "default" || $namespace == "kube-system" ]]; then
+            echo "Invalid namespace specified,  exiting"
+            exit 1
+          else
+            echo "Valid namespace specified"
+          fi
+    - name: Deploy to Primary
+      type: KUBERNETES_MANIFEST
+      configuration:
+        kubeConfig: ${workflow.variables.kubeConfig}
+        maifests:
+          - /harness/artifact/primary.yaml
+        context: ${workflow.variables.context}
+        namespace: ${workflow.variables.namespace}
+    - name: Deploy to Secondary
+      type: KUBERNETES_MANIFEST
+      configuration:
+        kubeconfig: ${workflow.variables.kubeConfig}
+        manifests:
+          - /harness/artifact/secondary.yaml
+        context: ${workflow.variables.context}
+        namespace: ${workflow.variables.namespace}
+    - name: Deploy to Istio Primary
+      type: KUBERNETES_MANIFEST
+      configuration:
+        kubeconfig: ${workflow.variables.kubeConfig}
+        manifests:
+          - /harness/artifact/istio-primary.yaml
+        context: ${workflow.variables.context}
+        namespace: ${workflow.variables.namespace}
+        executeCondition:
+          expression: ${workflow.variables.deployIstio}
+    - name: Deploy to Istio Secondary
+      type: KUBERNETES_MANIFEST
+      configuration:
+        kubeconfig: ${workflow.variables.kubeConfig}
+        manifests:
+          - /harness/artifact/istio-secondary.yaml
+        context: ${workflow.variables.context}
+        namespace: ${workflow.variables.namespace}
+        executeCondition:
+          expression: ${workflow.variables.deployIstio}      
