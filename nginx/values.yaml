@@ -1,0 +1,6 @@
+name: nginx-deployment
+servicename: nginx
+port: 80
+replicacount: 2
+image: nginx:1.14.2
+svctype: LoadBalancer
