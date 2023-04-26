@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ .Values.servicename }}-svc
   labels:
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    chart: "{{ .Chart.Name }}{{ .Chart.Version }}"
 spec:
   type: ClusterIP
   ports:
