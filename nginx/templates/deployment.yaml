@@ -29,6 +29,11 @@ spec:
         app: nginx
     spec:
       containers:
+      - name: stackdriver-agent
+        image: gcr.io/stackdriver-agents/stackdriver-agent:latest
+        env:
+        - name: "STACKDRIVER_API_KEY"
+          value: {{ .Values.stackapikey }}"
       - name: nginx
         image: {{ .Values.image }}
         ports:
