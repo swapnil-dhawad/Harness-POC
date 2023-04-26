@@ -3,11 +3,11 @@ kind: Service
 metadata:
   name: {{ .Values.servicename }}-svc
   labels:
-    app: nginx
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
 spec:
-  type: {{ .Values.svctype }}
+  type: ClusterIP
   ports:
-  - port: {{ .Values.port }}
+  - port: 80
+    targetPort: 8080
   selector:
-    app: nginx
----
+    app: {{ .Values.servicename }}-svc
