@@ -1,5 +1,5 @@
 name: nginx-deployment
-namespace: harness-deploy
+namespace: harness-namespace
 servicename: nginx
 port: 80
 replicacount: 2
