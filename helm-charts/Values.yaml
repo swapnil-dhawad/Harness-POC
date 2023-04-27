@@ -5,4 +5,3 @@ port: 80
 replicacount: 2
 image: nginx:1.14.2
 svctype: LoadBalancer
-stackapikey: "AIzaSyCF_sFZksnjCsgA11zukzMx6Iua1eNhrZc"
