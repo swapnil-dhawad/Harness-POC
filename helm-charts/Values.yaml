@@ -1,7 +1,1 @@
-name: nginx-deployment
 namespace: harness-deploy
-servicename: nginx
-port: 80
-replicacount: 2
-image: nginx:1.14.2
-svctype: LoadBalancer
