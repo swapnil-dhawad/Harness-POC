@@ -1,6 +1,5 @@
-metadata:
-  name: nginx-deployment
-  namespace: default
+name: nginx-deployment
+namespace: default
 servicename: nginx
 port: 80
 replicacount: 2
