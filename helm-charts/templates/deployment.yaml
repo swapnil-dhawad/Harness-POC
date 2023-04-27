@@ -14,7 +14,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.name }}
+  name: nginx-deployment
   namespace: {{ .Values.namespace }}
   labels:
     app: nginx
