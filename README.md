@@ -23,7 +23,7 @@ GitHub Repo [link](https://github.com)
 
 ![image](https://user-images.githubusercontent.com/56785623/235188153-74a597a2-928a-45d3-9ef6-60d3772090ca.png)
 
-3.  Values.yml is further reffered in Harness pipeline to deploy the artifact in the given name-space.
+3.  Values.yml is further referred in Harness pipeline to deploy the artifact in the given name-space.
 
 ![image](https://user-images.githubusercontent.com/56785623/235188636-90647adf-c9cf-4696-a67b-331cce2398a8.png)
 
@@ -47,6 +47,7 @@ GitHub Repo [link](https://github.com)
 
 
 ![image](https://user-images.githubusercontent.com/56785623/235205322-d9185638-d746-486a-9cbf-b42a809e60f7.png)
+
 
 
 
