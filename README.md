@@ -1,3 +1,4 @@
+
 # Harness
 
 Harness is the industry’s first Software Delivery Platform to use AI to simplify your DevOps processes - CI, CD & GitOps, Feature Flags, Cloud Costs, and much more.
@@ -17,19 +18,19 @@ GitHub Repo [link](https://github.com)
 
 1. The repo structure used for the pipeline looks like below.
 
-![image](https://user-images.githubusercontent.com/56785623/235187222-9bf4f17b-2329-43cf-ba65-b5c3743a91fe.png)
+    ![image](https://user-images.githubusercontent.com/56785623/235187222-9bf4f17b-2329-43cf-ba65-b5c3743a91fe.png)
 
 2. helm-charts folder has standard structure defined. 
 
-![image](https://user-images.githubusercontent.com/56785623/235188153-74a597a2-928a-45d3-9ef6-60d3772090ca.png)
+    ![image](https://user-images.githubusercontent.com/56785623/235188153-74a597a2-928a-45d3-9ef6-60d3772090ca.png)
 
 3.  Values.yml is further referred in Harness pipeline to deploy the artifact in the given name-space.
 
-![image](https://user-images.githubusercontent.com/56785623/235188636-90647adf-c9cf-4696-a67b-331cce2398a8.png)
+    ![image](https://user-images.githubusercontent.com/56785623/235188636-90647adf-c9cf-4696-a67b-331cce2398a8.png)
 
 4. Once login to Harness, below is the basic overview of Dashboard.
 
-![image](https://user-images.githubusercontent.com/56785623/235199554-ef0e8eb9-5dfb-4fb2-b509-6fcf624278ae.png)
+    ![image](https://user-images.githubusercontent.com/56785623/235199554-ef0e8eb9-5dfb-4fb2-b509-6fcf624278ae.png)
 
 5. Few important terms in Harness while buidling the pipeline. 
  
@@ -46,8 +47,6 @@ GitHub Repo [link](https://github.com)
     f. Enviorment - A Harness Environment represents where you are deploying your Service. 
 
 
-![image](https://user-images.githubusercontent.com/56785623/235205322-d9185638-d746-486a-9cbf-b42a809e60f7.png)
-
-
+     ![image](https://user-images.githubusercontent.com/56785623/235205322-d9185638-d746-486a-9cbf-b42a809e60f7.png)
 
 
