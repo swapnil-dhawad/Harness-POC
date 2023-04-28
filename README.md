@@ -27,3 +27,26 @@ GitHub Repo [link](https://github.com)
 
 ![image](https://user-images.githubusercontent.com/56785623/235188636-90647adf-c9cf-4696-a67b-331cce2398a8.png)
 
+4. Once login to Harness, below is the basic overview of Dashboard.
+
+![image](https://user-images.githubusercontent.com/56785623/235199554-ef0e8eb9-5dfb-4fb2-b509-6fcf624278ae.png)
+
+5. Few important terms in Harness while buidling the pipeline. 
+ 
+    a. Project   -  It's is a plyground where all the pipline related worked grouped together. 
+
+    b. Pipelines -  All the pipelines creared in the particular project visible inside this tab.
+
+    c. Services  -  A Harness Service is what you're deploying. It contains Manifest      configuration,artifacts configuuration.etc.
+
+    d. Connector -  You use Connectors to connect Harness to your tools, such as Kubernetes clusters, code and artifact repositories, and cloud platforms.
+
+    e. Delegates -  Harness Delegate is a service you run in your local network or VPC to connect your artifacts, infrastructure, collaboration, verification and other providers, with Harness Manager
+
+    f. Enviorment - A Harness Environment represents where you are deploying your Service. 
+
+
+![image](https://user-images.githubusercontent.com/56785623/235205322-d9185638-d746-486a-9cbf-b42a809e60f7.png)
+
+
+
