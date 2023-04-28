@@ -34,7 +34,7 @@ GitHub Repo [link](https://github.com)
 
 5. Few important terms in Harness while buidling the pipeline. 
  
-    a. Project   -  It's is a plyground where all the pipline related worked grouped together. 
+    a. Project   -  It's is a plyground where all the pipline related work group together. 
 
     b. Pipelines -  All the pipelines creared in the particular project visible inside this tab.
 
