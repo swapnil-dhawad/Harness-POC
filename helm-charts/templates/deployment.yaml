@@ -33,3 +33,5 @@ spec:
         image: {{ .Values.image }}
         ports:
         - containerPort: {{ .Values.port }}
+        command: ["/bin/sh"]
+        args: ["-c", "while true; do echo $(date) 'Hello World'; sleep 10; done"]
