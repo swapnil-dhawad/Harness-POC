@@ -71,4 +71,22 @@ Let's take an example of Deploy to Primary Stage.
        Second stage is to select the infra like EC2 server,Google cloud function, lambda etc. 
        
 ![image](https://user-images.githubusercontent.com/56785623/235636320-54b51174-ef1a-47bc-a671-8fdce24b17de.png)
+
+     5.Setting up the Values.yml as a hanress manifests in case Values.yml not provided with Helm charts.
+         Select Enviorment type as PreProduction then in Enviorment overrides second select Add new manifest to override and Select an Option from hanress Namespace. 
+![image](https://user-images.githubusercontent.com/56785623/235644711-32f0310e-3726-4485-a795-f583a428f21c.png)
+
+     6. Next is Execution stage which provides deiffernt options of deployment like Canary,Blue Green,Rolling Deployment. In below example Canary Deployment has been seelected, it also asks for number of instances for deployment. 
+
+![image](https://user-images.githubusercontent.com/56785623/235646789-3a1b1768-f037-43e1-833b-0e43930233d6.png)
+
+![image](https://user-images.githubusercontent.com/56785623/235646995-1dbc1747-ec35-4f27-af16-0963bd012f0f.png)
+     
+     7. Advanced Section defines various options in case deployment failure Strategy such as rollback,delegates,conditional execution. 
+
+![image](https://user-images.githubusercontent.com/56785623/235648096-e2f15dd8-9bd4-4683-b7d0-0e27228e3a0a.png)
+
+The pipeline can be triggered using webhook option, manual run or approval based execution. Pipeline execution logs are also avaialable to monitor the execution of pipeline.
+
+
                         
