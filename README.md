@@ -53,9 +53,22 @@ GitHub Repo [link](https://github.com)
 ## Pipeline Overview
 ![image](https://user-images.githubusercontent.com/56785623/235207288-386eb5b0-2063-4c0e-8afb-27284adfe431.png)
 
+Above pipeline depicts complete overview of e2e deployment of an artifact on Primary & Secondary GKE cluster using Helm charts. It also proceed with Istio deployment on primary and Secondary cluster.
+
+Let's take an example of Deploy to Primary Stage.
+
+    1. Select a Stage as type 'Deployment' from Add stage widget. 
+    2. In Overview section select Deployment type as Kubernetes. 
+    3. Next we have to configure service. As below; 
+       Deployment Type as Kubernetes and manifests has been added from github repo as Values.yml containing "Namespace" details where deployment is planned on the cluster. 
+       Pipleine trigger action is release tag as shown in second screenshot.
+       
 ![image](https://user-images.githubusercontent.com/56785623/235631456-34b00615-82e6-436f-8301-85ee4371872e.png)
+
 ![image](https://user-images.githubusercontent.com/56785623/235633175-79d9fb99-89d2-436a-9789-50932935eda5.png)
+   
+    4. Next is setting up the Enviorment, First is to select the Enviorment from avaialable options like Prodcution, PreProduction or Test etc. 
+       Second stage is to select the infra like EC2 server,Google cloud function, lambda etc. 
+       
 ![image](https://user-images.githubusercontent.com/56785623/235636320-54b51174-ef1a-47bc-a671-8fdce24b17de.png)
-
-
-
+                        
