@@ -2,6 +2,6 @@ name: nginx-deployment
 namespace: default
 servicename: nginx
 port: 80
-replicacount: 2
+replicacount: 3
 image: nginx:1.14.2
 svctype: LoadBalancer
