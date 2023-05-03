@@ -1,0 +1,175 @@
+pipeline:
+  name: K8sDeploy
+  identifier: HelmDeploy
+  projectIdentifier: nexus
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - parallel:
+        - stage:
+            name: Deploy to Primary
+            identifier: Deploy_to_Primary
+            description: ""
+            type: Deployment
+            spec:
+              deploymentType: Kubernetes
+              execution:
+                steps:
+                  - step:
+                      type: K8sCanaryDeploy
+                      name: Deploy Primary
+                      identifier: K8sCanaryDeploy_1
+                      spec:
+                        skipDryRun: false
+                        instanceSelection:
+                          type: Count
+                          spec:
+                            count: 1
+                        delegateSelectors:
+                          - helm-gke-delegate-playpen-primary-region
+                      timeout: 10m
+                      failureStrategies: []
+                rollbackSteps: []
+              service:
+                serviceRef: nginx_primary
+              environment:
+                environmentRef: PlaypenNonProdPrimary
+                deployToAll: false
+                infrastructureDefinitions:
+                  - identifier: PrimaryPre
+            tags: {}
+            failureStrategies:
+              - onFailure:
+                  errors:
+                    - AllErrors
+                  action:
+                    type: StageRollback
+            delegateSelectors:
+              - helm-gke-delegate-playpen-primary-region
+        - stage:
+            name: Deploy to Secondary Region
+            identifier: Deploy_to_Secondary_Region
+            description: ""
+            type: Deployment
+            spec:
+              deploymentType: Kubernetes
+              execution:
+                steps:
+                  - step:
+                      type: K8sCanaryDeploy
+                      name: Deploy to Secondary
+                      identifier: Deploy_to_Secondary
+                      spec:
+                        skipDryRun: false
+                        instanceSelection:
+                          type: Count
+                          spec:
+                            count: 1
+                      timeout: 10m
+                rollbackSteps: []
+              service:
+                serviceRef: nginx_primary
+              environment:
+                environmentRef: PlayPenNonProdSecondary
+                deployToAll: false
+                infrastructureDefinitions:
+                  - identifier: SecondaryPre
+            tags: {}
+            failureStrategies:
+              - onFailure:
+                  errors:
+                    - AllErrors
+                  action:
+                    type: StageRollback
+    - parallel:
+        - stage:
+            name: Deploy to Istio Primary
+            identifier: Deploy_to_Istio_Primary
+            description: ""
+            type: Deployment
+            spec:
+              deploymentType: Kubernetes
+              execution:
+                steps:
+                  - step:
+                      type: K8sCanaryDeploy
+                      name: Deploy Istio to Primary
+                      identifier: Deploy_Istio_to_Primary
+                      spec:
+                        skipDryRun: false
+                        instanceSelection:
+                          type: Count
+                          spec:
+                            count: 1
+                      timeout: 10m
+                rollbackSteps: []
+              service:
+                serviceRef: nginx_primary
+              environment:
+                environmentRef: PlaypenIsitoPrimary
+                deployToAll: false
+                infrastructureDefinitions:
+                  - identifier: NonProdIstioPrimary
+            tags: {}
+            failureStrategies:
+              - onFailure:
+                  errors:
+                    - AllErrors
+                  action:
+                    type: StageRollback
+            when:
+              pipelineStatus: Success
+              condition: <+pipeline.variables.ISTIO_DEPLOY> == true
+        - stage:
+            name: Deploy to Istio Secondary Region
+            identifier: Deploy_to_Istio_Secondary_Region
+            description: ""
+            type: Deployment
+            spec:
+              deploymentType: Kubernetes
+              execution:
+                steps:
+                  - step:
+                      type: K8sCanaryDeploy
+                      name: Deploy Istio to Secondary
+                      identifier: Deploy_Istio_to_Secondary
+                      spec:
+                        skipDryRun: false
+                        instanceSelection:
+                          type: Count
+                          spec:
+                            count: 1
+                      timeout: 10m
+                rollbackSteps: []
+              service:
+                serviceRef: nginx_primary
+              environment:
+                environmentRef: PlaypenIsitoSecondary
+                deployToAll: false
+                infrastructureDefinitions:
+                  - identifier: IstioSecondary
+            tags: {}
+            failureStrategies:
+              - onFailure:
+                  errors:
+                    - AllErrors
+                  action:
+                    type: StageRollback
+            when:
+              pipelineStatus: Success
+              condition: <+pipeline.variables.ISTIO_DEPLOY> == true
+  variables:
+    - name: HELM_REPO
+      type: String
+      description: ""
+      value: <+input>
+    - name: RELEASE_TAG
+      type: String
+      description: ""
+      value: <+input>
+    - name: ISTIO_DEPLOY
+      type: String
+      default: "False"
+      description: ""
+      value: <+input>.allowedValues(True,False)
+  allowStageExecutions: true
