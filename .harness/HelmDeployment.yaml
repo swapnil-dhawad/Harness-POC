@@ -18,20 +18,6 @@ pipeline:
               execution:
                 steps:
                   - step:
-                      type: ShellScript
-                      name: See Payload
-                      identifier: See_Payload
-                      spec:
-                        shell: Bash
-                        onDelegate: true
-                        source:
-                          type: Inline
-                          spec:
-                            script: echo <+trigger.payload>
-                        environmentVariables: []
-                        outputVariables: []
-                      timeout: 10m
-                  - step:
                       type: HelmDeploy
                       name: Deploy nginx
                       identifier: Deploy_nginx
