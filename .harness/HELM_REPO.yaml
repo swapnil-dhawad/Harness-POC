@@ -1,5 +1,6 @@
 inputSet:
   name: HELM_REPO
+  tags: {}
   identifier: HELM_REPO
   orgIdentifier: default
   projectIdentifier: nexus
@@ -11,4 +12,8 @@ inputSet:
         value: Harness-POC
       - name: RELEASE_TAG
         type: String
-        value: <+trigger.payload.tag_name>
+        value: <+trigger.payload.release.tag_name>
+  cacheResponse:
+    cacheState: VALID_CACHE
+    ttlLeft: 2591972056
+    lastUpdatedAt: 1683116424614
