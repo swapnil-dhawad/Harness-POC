@@ -1,0 +1,14 @@
+inputSet:
+  name: HELM_REPO
+  identifier: HELM_REPO
+  orgIdentifier: default
+  projectIdentifier: nexus
+  pipeline:
+    identifier: HelmDeployment
+    variables:
+      - name: HELM_REPO
+        type: String
+        value: Harness-POC
+      - name: RELEASE_TAG
+        type: String
+        value: <+trigger.payload.tag_name>
