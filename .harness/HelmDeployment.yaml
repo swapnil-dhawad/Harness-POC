@@ -205,7 +205,7 @@ pipeline:
       type: String
       description: ""
       value: <+input>
-    - name: release_tag
+    - name: RELEASE_TAG
       type: String
       description: ""
       value: <+input>
