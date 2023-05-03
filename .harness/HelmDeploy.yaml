@@ -16,7 +16,7 @@ pipeline:
               execution:
                 steps:
                   - step:
-                      type: K8sCanaryDeploy
+                      type: K8sCanaryDeployment
                       name: Deploy Primary
                       identifier: K8sCanaryDeploy_1
                       spec:
