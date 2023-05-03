@@ -1,0 +1,18 @@
+inputSet:
+  pipeline:
+    identifier: HelmDeploy
+    variables:
+      - name: HELM_REPO
+        type: String
+        value: Harness-POC
+      - name: RELEASE_TAG
+        type: String
+        value: release_v1.7
+      - name: ISTIO_DEPLOY
+        type: String
+        default: "False"
+        value: "False"
+  name: HarnessTest
+  identifier: HarnessTest
+  orgIdentifier: default
+  projectIdentifier: nexus
