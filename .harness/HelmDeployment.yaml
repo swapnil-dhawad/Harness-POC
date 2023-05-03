@@ -1,5 +1,5 @@
 pipeline:
-  name: HelmDeployment
+  name: HelmDeployments
   identifier: HelmDeployment
   projectIdentifier: nexus
   orgIdentifier: default
