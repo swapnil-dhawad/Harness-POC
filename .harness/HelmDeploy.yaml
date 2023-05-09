@@ -16,19 +16,11 @@ pipeline:
               execution:
                 steps:
                   - step:
-                      type: K8sCanaryDeploy
                       name: Deploy Primary
                       identifier: K8sCanaryDeploy_1
-                      spec:
-                        skipDryRun: false
-                        instanceSelection:
-                          type: Count
-                          spec:
-                            count: 1
-                        delegateSelectors:
-                          - helm-gke-delegate-playpen-primary-region
-                      timeout: 10m
-                      failureStrategies: []
+                      template:
+                        templateRef: Canary_Deploy
+                        versionLabel: V1.0
                 rollbackSteps: []
               service:
                 serviceRef: nginx_primary
